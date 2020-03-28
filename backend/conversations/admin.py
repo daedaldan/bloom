@@ -1,7 +1,9 @@
 from django.contrib import admin
+from django.contrib.auth.models import User
 
-from .models import User, Request, Match
+from .models import Profile, Request, Match
 
-admin.site.register(User)
+admin.site.unregister(User)
+admin.site.register([User, Profile])
 admin.site.register(Request)
 admin.site.register(Match)
