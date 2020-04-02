@@ -7,7 +7,7 @@ from django.dispatch import receiver
 class Profile(models.Model):
     """Extension of User model with one-to-one link."""
 
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, related_name='profile', on_delete=models.CASCADE)
     line = models.CharField(max_length=150)
     bio = models.TextField(max_length=300)
     contactInfo = models.CharField(max_length=200)
