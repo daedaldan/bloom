@@ -15,32 +15,33 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'last_name', 'email', 'password')
+        fields = ('username', 'first_name', 'last_name', 'email', 'password', 'profile')
         extra_kwargs = {'password': {'write_only': True}}
 
-        def create(self, validated_data):
-            profile_data = validated_data.pop('profile')
-            password = validated_data.pop('password')
-            user = User(**validated_data)
-            user.set_password(password)
-            user.save()
-            Profile.objects.create(user=user, **profile_data)
-            return user
+    def create(self, validated_data):
+        profile_data = validated_data.pop('profile')
+        password = validated_data.pop('password')
+        user = User(**validated_data)
+        user.set_password(password)
+        user.save()
+        Profile.objects.create(user=user, **profile_data)
 
-        def update(self, instance, validated_data):
-            profile_data = validated_data.pop('profile')
-            profile = instance.profile
+        return user
 
-            instance.email = validated_data.get('email', instance.email)
-            instance.save()
+    def update(self, instance, validated_data):
+        profile_data = validated_data.pop('profile')
+        profile = instance.profile
 
-            profile.line = profile_data.get('line', profile.line)
-            profile.bio = profile_data.get('bio', profile.bio)
-            profile.contactInfo = profile_data.get('contactInfo', profile.contactInfo)
-            profile.profilePhotoLink = profile_data.get('profilePhotoLink', profile.profilePhotoLink)
-            profile.save()
+        instance.email = validated_data.get('email', instance.email)
+        instance.save()
 
-            return instance
+        profile.line = profile_data.get('line', profile.line)
+        profile.bio = profile_data.get('bio', profile.bio)
+        profile.contactInfo = profile_data.get('contactInfo', profile.contactInfo)
+        profile.profilePhotoLink = profile_data.get('profilePhotoLink', profile.profilePhotoLink)
+        profile.save()
+
+        return instance
 
 
 class RequestSerializer(serializers.ModelSerializer):
@@ -52,4 +53,4 @@ class RequestSerializer(serializers.ModelSerializer):
 class MatchSerializer(serializers.ModelSerializer):
     class Meta:
         model = Match
-        fields = ('matchA', 'matchB')
+        fields = ('userA', 'friendA', 'userB', 'friendB')

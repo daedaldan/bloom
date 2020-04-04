@@ -14,16 +14,14 @@ class Profile(models.Model):
     profilePhotoLink = models.URLField(max_length=200, blank=True)
 
     @receiver(post_save, sender=User)
-    def create_user_profile(sender, instance, created, **kwargs):
-        if created:
+    def create_save_user_profile(sender, instance, created, **kwargs):
+        try:
+            instance.profile.save()
+        except ObjectDoesNotExist:
             Profile.objects.create(user=instance)
 
-    @receiver(post_save, sender=User)
-    def save_user_profile(sender, instance, **kwargs):
-        instance.profile.save()
-
     def __str__(self):
-        return user.first_name + " " + user.last_name
+        return self.user.first_name + " " + self.user.last_name
 
 
 class Request(models.Model):
@@ -47,10 +45,10 @@ class Request(models.Model):
 class Match(models.Model):
     """A conversation match between two users who want to talk to each other."""
 
-    matchA = {'user': models.ForeignKey(User, on_delete=models.CASCADE),
-              'friend': models.ForeignKey(User, on_delete=models.CASCADE)}
-    matchB = {'user': models.ForeignKey(User, on_delete=models.CASCADE),
-              'friend': models.ForeignKey(User, on_delete=models.CASCADE)}
+    userA = models.ForeignKey(User, related_name='match_user_A', on_delete=models.CASCADE, null=True)
+    friendA = models.ForeignKey(User, related_name='match_friend_A', on_delete=models.CASCADE, null=True)
+    userB = models.ForeignKey(User, related_name='match_user_B', on_delete=models.CASCADE, null=True)
+    friendB = models.ForeignKey(User, related_name='match_friend_B', on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return "match between " + matchA[user].name + " and " + matchA[friend].name

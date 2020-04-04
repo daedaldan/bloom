@@ -18,7 +18,7 @@ class UserAdmin(BaseUserAdmin):
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('username', 'email', 'password1', 'password2')
+            'fields': ('username', 'email', 'first_name', 'last_name', 'password1', 'password2')
         }),
     )
     inlines = (ProfileInline, )
