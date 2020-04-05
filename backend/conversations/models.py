@@ -39,7 +39,7 @@ class Request(models.Model):
     status = models.PositiveSmallIntegerField(choices=STATUS_CHOICES)
 
     def __str__(self):
-        return "request from " + self.sender.name + " to " + self.receiver.name
+        return "request from " + self.sender.first_name + " to " + self.receiver.first_name
 
 
 class Match(models.Model):
@@ -51,4 +51,4 @@ class Match(models.Model):
     friendB = models.ForeignKey(User, related_name='match_friend_B', on_delete=models.CASCADE, null=True)
 
     def __str__(self):
-        return "match between " + matchA[user].name + " and " + matchA[friend].name
+        return "match between " + self.userA.first_name + " and " + self.friendA.first_name
