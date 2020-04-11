@@ -2,6 +2,14 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.core.exceptions import ObjectDoesNotExist
+
+
+class Interest(models.Model):
+    interest = models.CharField(max_length=150)
+
+    def __str__(self):
+        return self.interest
 
 
 class Profile(models.Model):
@@ -10,8 +18,10 @@ class Profile(models.Model):
     user = models.OneToOneField(User, related_name='profile', on_delete=models.CASCADE)
     line = models.CharField(max_length=150)
     bio = models.TextField(max_length=300)
+    age = models.PositiveIntegerField(default=18)
     contactInfo = models.CharField(max_length=200)
     profilePhotoLink = models.URLField(max_length=200, blank=True)
+    interests = models.ManyToManyField(Interest, related_name='profile')
 
     @receiver(post_save, sender=User)
     def create_save_user_profile(sender, instance, created, **kwargs):
@@ -21,7 +31,7 @@ class Profile(models.Model):
             Profile.objects.create(user=instance)
 
     def __str__(self):
-        return self.user.first_name + " " + self.user.last_name
+        return self.user.username
 
 
 class Request(models.Model):

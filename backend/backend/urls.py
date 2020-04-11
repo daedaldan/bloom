@@ -5,6 +5,7 @@ from conversations import views
 
 router = routers.DefaultRouter()
 router.register(r'users', views.UserView)
+router.register(r'interests', views.InterestView)
 router.register(r'requests', views.RequestView)
 router.register(r'matches', views.MatchView)
 

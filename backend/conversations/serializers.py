@@ -1,13 +1,21 @@
 from rest_framework import serializers
 
 from django.contrib.auth.models import User
-from .models import Profile, Request, Match
+from .models import Interest, Profile, Request, Match
+
+
+class InterestSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Interest
+        fields = '__all__'
 
 
 class ProfileSerializer(serializers.ModelSerializer):
+    interest = InterestSerializer(read_only=True, many=True)
+
     class Meta:
         model = Profile
-        fields = ('line', 'bio', 'contactInfo', 'profilePhotoLink')
+        fields = ('line', 'bio', 'contactInfo', 'profilePhotoLink', 'interest')
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
