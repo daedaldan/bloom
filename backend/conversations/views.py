@@ -4,6 +4,7 @@ from rest_framework import viewsets
 from .serializers import UserSerializer, InterestSerializer, RequestSerializer, MatchSerializer
 from .models import Interest, Profile, Request, Match
 from conversations.permissions import IsLoggedInUserOrAdmin, IsAdminUser
+from rest_framework.permissions import AllowAny
 
 
 class UserView(viewsets.ModelViewSet):

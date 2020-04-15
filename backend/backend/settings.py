@@ -39,15 +39,26 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # For user registration with JWT.
+    'django.contrib.sites',
+
     # Installed third-party apps.
     'corsheaders',
     'rest_framework',
     'rest_framework.authtoken',
     'rest_auth',
+    'rest_auth.registration',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 
     # My apps.
     'conversations',
 ]
+
+SITE_ID = 1
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
