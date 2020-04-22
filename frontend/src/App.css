@@ -1,38 +1,147 @@
-.App {
-  text-align: center;
+body {
+  margin-left: 50px;
+  margin-bottom: 100px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1 {
+  font-family: Lato;
+  font-weight: bold;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+h2 {
+  font-family: Lato;
+  font-weight: bold;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+p {
+  margin: 20px 10px 20px 10px;
+  font-family: Raleway;
+}
+
+a {
+  color: black;
+}
+
+/* Navbar */
+
+.navbar {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  font-family: Lato;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  float: right;
+  padding: 20px;
+}
+
+.logo {
+  font-size: 20px;
+}
+
+/* Cards */
+
+.card-border {
+  display: inline-block;
+  border-radius: 5%;
+  padding: 20px;
+  box-shadow: 5px 5px 10px grey;
+}
+
+/* User card */
+
+.user-card {
+  margin: auto;
+  text-align: center;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  width: 275px;
+}
+
+.user-card-photo {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 20px;
+}
+
+.user-card-button {
+  border-style: none;
+  border-radius: 10px;
+  padding: 10px 15px 10px 15px;
+  background: #f09433; 
+  background: linear-gradient(45deg, #add8e6 25%, #86c5da 75%); 
+  font-family: Lato;
+}
+
+/* Profile card */
+
+.profile-card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 500px;
+}
+
+.profile-card-photo {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  display: inline;
+}
+
+.user-info {
+  display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  text-align: left;
 }
 
-.App-link {
-  color: #61dafb;
+.profile-name {
+  margin-left: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.profile-line {
+  margin-left: 20px;
+}
+
+.bio {
+  text-align: left;
+}
+
+.interests {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.interest {
+  margin-right: 5px;
+  margin-top: auto;
+  margin-bottom: 20px;
+  font-size: 12px;
+  background-color: #add8e6;
+  border-radius: 10px;
+  line-height: 0;
+}
+
+.profile-card-button {
+  border-style: none;
+  border-radius: 10px;
+  padding: 10px 15px 10px 15px;
+  background: #f09433; 
+  background: linear-gradient(45deg, #add8e6 25%, #86c5da 75%); 
+  font-family: Lato;
+  width: 50%;
 }
