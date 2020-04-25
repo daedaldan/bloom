@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
+import {Match} from "../Home/Matches/Match";
 
-export default class NavigationBar extends Component {
-  render() {
-    return (
-        <div className="navbar">
+export function NavigationBar(props) {
+  return (
+      <div className="navbar">
           <p className="logo">Bloom</p>
           <ul>
             <li>Profile</li>
             <li>Home</li>
           </ul>
         </div>
-      );
-  }
+  );
 }
