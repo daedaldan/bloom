@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
-import './App.css';
+import React from 'react';
 
-export function Match(props) {
+export default function Match(props) {
   return (
       <a href={props.profileCardLink}>
         <div className="card-border user-card">

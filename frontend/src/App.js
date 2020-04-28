@@ -1,6 +1,24 @@
 import React, { Component } from 'react';
 import './App.css';
 
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
+import AuthService from "./services/auth-service.js";
+
+import LandingPage from "./components/LandingPage/LandingPage.js";
+import NavigationBar from "./components/NavigationBar/NavigationBar.js";
+import Home from "./components/Home/Home.js";
+import Matches from "./components/Home/Matches/Matches.js";
+import Match from "./components/Home/Matches/Matches.js";
+import Recommendations from "./components/Home/Recommendations/Recommendations.js";
+import Recommendation from "./components/Home/Recommendations/Recommendation.js";
+import ProfileCard from "./components/ProfileCard/ProfileCard.js";
+import Interests from "./components/ProfileCard/Interests.js";
+import Interest from "./components/ProfileCard/Interest.js";
+import Settings from "./components/Settings/Settings.js";
+import Login from "./components/Authentication/Login.js";
+import Register from "./components/Authentication/Register.js";
+
 const users = [
     {
         "username": "test_user1",
@@ -39,7 +57,6 @@ const users = [
         }
     }
 ]
-
 const requests = [
   {
     "sender": 1,
@@ -47,7 +64,6 @@ const requests = [
     "status": 0
   },
 ]
-
 const matches = [
     {
     "userA": 2,
@@ -58,8 +74,39 @@ const matches = [
 ]
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentUser: undefined
+    };
+
+    this.logOut = this.logOut.bind(this);
+  }
+
+  componentDidMount() {
+      const user = AuthService.getCurrentUser();
+
+      if (user) {
+          this.setState({
+              currentUser: AuthService.getCurrentUser()
+          })
+      }
+  }
+
+  logOut() {
+      AuthService.logout();
+  }
+
   render() {
-    return <h1>Hello</h1>
+    const currentUser = this.state;
+
+    return (
+        <div>
+          <NavigationBar/>
+          <Home/>
+        </div>
+
+    );
   }
 }
 

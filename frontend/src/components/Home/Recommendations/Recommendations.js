@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
-import './App.css';
+import React from 'react';
 
-import { Recommendation } from './Recommendation.js';
+import Recommendation from './Recommendation.js';
 
-export function Recommendations(props) {
+export default function Recommendations(props) {
   const recommendations = props.recommendations.map((recommendation) =>
     <Recommendation profileCardLink={props.profileCardLink}
            profilePhotoLink={recommendation.profilePhotoLink}

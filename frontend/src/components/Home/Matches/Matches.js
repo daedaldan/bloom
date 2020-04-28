@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
-import './App.css';
+import React from 'react';
 
-import { Match } from './Match.js';
+import Match from './Match.js';
 
-export function Matches(props) {
+export default function Matches(props) {
   const matches = props.matches.map((match) =>
     <Match profileCardLink={props.profileCardLink}
            profilePhotoLink={match.profilePhotoLink}

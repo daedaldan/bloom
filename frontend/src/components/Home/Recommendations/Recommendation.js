@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import './App.css';
 
-export class Recommendation extends Component {
+export default class Recommendation extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -12,7 +11,7 @@ export class Recommendation extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick() {
+  handleClick(e) {
     if (this.state.connected) {
       this.setState(state => ({
         buttonText: "Connect",
@@ -24,6 +23,8 @@ export class Recommendation extends Component {
         connected: !state.connected
       }));
     }
+
+    e.preventDefault();
   }
 
   render() {

@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
-import './App.css';
+import React from 'react';
 
-export function Settings(props) {
+export default function Settings(props) {
   return (
       <p>To be added</p>
   );

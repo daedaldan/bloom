@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import './App.css';
 
-import { Interests } from './Interests.js'
+import Interests from './Interests.js'
 
-export function ProfileCard(props) {
+export default function ProfileCard(props) {
   return (
       <div className="card-border profile-card">
         <div className="user-info">
