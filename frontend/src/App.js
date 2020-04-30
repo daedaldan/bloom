@@ -103,7 +103,7 @@ class App extends Component {
     return (
         <div>
           <NavigationBar/>
-          <Home/>
+          {/*<Home/>*/}
         </div>
 
     );
