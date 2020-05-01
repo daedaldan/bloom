@@ -101,10 +101,10 @@ class App extends Component {
     const currentUser = this.state;
 
     return (
-        <div>
+        <Router>
           <NavigationBar/>
           {/*<Home/>*/}
-        </div>
+        </Router>
 
     );
   }
