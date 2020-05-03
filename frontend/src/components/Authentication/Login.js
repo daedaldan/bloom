@@ -19,12 +19,14 @@ const required = value => {
 export default class Login extends Component {
   constructor(props) {
     super(props);
-    this.handleLogin = this.handleLogin.bind(this);
+    this.LogIn = this.LogIn.bind(this);
     this.onChangeUsername = this.onChangeUsername.bind(this);
+    this.onChangeEmail = this.onChangeEmail.bind(this);
     this.onChangePassword = this.onChangePassword.bind(this);
 
     this.state = {
       username: "",
+      email: "",
       password: "",
       loading: false,
       message: ""
@@ -37,14 +39,23 @@ export default class Login extends Component {
     });
   }
 
-  onChangePassword(e) {
+  onChangeEmail(e) {
     this.setState({
-      username: e.target.value
+      email: e.target.value
     });
   }
 
-  handleLogin(e) {
+  onChangePassword(e) {
+    this.setState({
+      password: e.target.value
+    });
+  }
+
+  LogIn(e) {
     e.preventDefault();
+
+    this.props.handleLogIn();
+    console.log("in login");
 
     this.setState({
       message: "",
@@ -54,9 +65,9 @@ export default class Login extends Component {
     this.form.validateAll();
 
     if (this.checkBtn.context._errors.length === 0) {
-      AuthService.login(this.state.username, this.state.password).then(
+      AuthService.login(this.state.username, this.state.email, this.state.password).then(
           () => {
-            this.props.history.push("/Home/home")
+            this.props.history.push("/home")
             window.location.reload();
           },
           error => {
@@ -75,6 +86,8 @@ export default class Login extends Component {
         loading: false
       });
     }
+
+    console.log("pushed the props in login");
   }
 
   render() {
@@ -93,6 +106,17 @@ export default class Login extends Component {
                   name="username"
                   value={this.state.username}
                   onChange={this.onChangeUsername}
+                  validations={[required]}
+              />
+            </div>
+
+            <div>
+              <label htmlFor="email">Email</label>
+              <Input
+                  type="text"
+                  name="email"
+                  value={this.state.email}
+                  onChange={this.onChangeEmail}
                   validations={[required]}
               />
             </div>

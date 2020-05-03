@@ -80,6 +80,7 @@ class App extends Component {
       currentUser: undefined
     };
 
+    this.logIn = this.logIn.bind(this);
     this.logOut = this.logOut.bind(this);
   }
 
@@ -93,19 +94,25 @@ class App extends Component {
       }
   }
 
+  logIn() {
+    this.setState({
+      currentUser: AuthService.getCurrentUser()
+    });
+
+    console.log("in app");
+  }
+
   logOut() {
-      AuthService.logout();
+    AuthService.logout();
+
+    this.setState({
+      currentUser: undefined
+    });
   }
 
   render() {
-    const currentUser = this.state;
-
     return (
-        <Router>
-          <NavigationBar/>
-          {/*<Home/>*/}
-        </Router>
-
+        <NavigationBar currentUser={this.state.currentUser} logIn={this.logIn} logOut={this.logOut} />
     );
   }
 }
