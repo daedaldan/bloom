@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { withRouter } from "react-router-dom";
+
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
@@ -16,10 +18,10 @@ const required = value => {
   }
 };
 
-export default class Login extends Component {
+class Login extends Component {
   constructor(props) {
     super(props);
-    this.LogIn = this.LogIn.bind(this);
+    this.logIn = this.logIn.bind(this);
     this.onChangeUsername = this.onChangeUsername.bind(this);
     this.onChangeEmail = this.onChangeEmail.bind(this);
     this.onChangePassword = this.onChangePassword.bind(this);
@@ -51,10 +53,8 @@ export default class Login extends Component {
     });
   }
 
-  LogIn(e) {
+  logIn(e) {
     e.preventDefault();
-
-    this.props.handleLogIn();
     console.log("in login");
 
     this.setState({
@@ -67,7 +67,7 @@ export default class Login extends Component {
     if (this.checkBtn.context._errors.length === 0) {
       AuthService.login(this.state.username, this.state.email, this.state.password).then(
           () => {
-            this.props.history.push("/home")
+            this.props.history.push("/home");
             window.location.reload();
           },
           error => {
@@ -87,6 +87,7 @@ export default class Login extends Component {
       });
     }
 
+    this.props.handleLogIn();
     console.log("pushed the props in login");
   }
 
@@ -94,7 +95,7 @@ export default class Login extends Component {
     return (
         <div>
           <Form
-            onSubmit={this.handleLogin}
+            onSubmit={this.logIn}
             ref={c => {
             this.form = c;
             }}
@@ -159,3 +160,5 @@ export default class Login extends Component {
     );
   }
 }
+
+export default withRouter(Login);

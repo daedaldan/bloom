@@ -25,15 +25,10 @@ export default class NavigationBar extends Component {
   render() {
     let navbarLinks;
 
-    if (this.state.currentUser !== undefined) {
+    if (this.props.currentUser !== undefined) {
       navbarLinks = (<ul>
                       <li>
-                        <Link to={{
-                          pathname: "/settings",
-                          state: {
-                            handleLogOut: "hello"
-                          }
-                        }}>
+                        <Link to="/settings">
                           Profile
                         </Link>
                       </li>
