@@ -55,7 +55,6 @@ class Login extends Component {
 
   logIn(e) {
     e.preventDefault();
-    console.log("in login");
 
     this.setState({
       message: "",
@@ -88,7 +87,6 @@ class Login extends Component {
     }
 
     this.props.handleLogIn();
-    console.log("pushed the props in login");
   }
 
   render() {

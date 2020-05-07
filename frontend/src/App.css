@@ -25,6 +25,15 @@ a {
   text-decoration: none;
 }
 
+button {
+  border-style: none;
+  border-radius: 10px;
+  padding: 10px 15px 10px 15px;
+  background: #f09433;
+  background: linear-gradient(45deg, #add8e6 25%, #86c5da 75%);
+  font-family: Lato;
+}
+
 /* Navbar */
 
 .navbar {
@@ -48,6 +57,35 @@ li {
 
 .logo {
   font-size: 20px;
+}
+
+/* Website */
+
+.jumbotron {
+
+}
+
+.jumbotron-text {
+
+}
+
+.jumbotron-title {
+  margin-left: 10px;
+  font-size: 56px;
+}
+
+.jumbotron-image {
+
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  width: 100%;
+  padding-left: 50px;
 }
 
 /* Cards */
@@ -77,15 +115,6 @@ li {
   margin-right: auto;
   margin-left: auto;
   margin-bottom: 20px;
-}
-
-.user-card-button {
-  border-style: none;
-  border-radius: 10px;
-  padding: 10px 15px 10px 15px;
-  background: #f09433; 
-  background: linear-gradient(45deg, #add8e6 25%, #86c5da 75%); 
-  font-family: Lato;
 }
 
 /* Profile card */

@@ -10,7 +10,7 @@ export default function Match(props) {
           />
           <h2>{props.firstName} {props.lastName}</h2>
           <p>{props.bio}</p>
-          <button className="user-card-button">Chat</button>
+          <button>Chat</button>
         </div>
       </a>
   );

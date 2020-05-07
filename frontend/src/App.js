@@ -90,8 +90,6 @@ class App extends Component {
            currentUser: AuthService.getCurrentUser()
          })
     }
-
-    console.log(this.state.currentUser);
   }
 
   logOut() {

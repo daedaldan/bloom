@@ -30,13 +30,14 @@ export default class Recommendation extends Component {
   render() {
     return (
         <a href={this.props.profileCardLink}>
-          <div class="card-border user-card">
-            <img class="user-card-photo"
+          <div className="card-border user-card">
+            <img className="user-card-photo"
                  src={this.props.profilePhotoLink}
-                 alt="profile photo"/>
+                 alt="profile photo"
+            />
             <h2>{this.props.firstName} {this.props.lastName}</h2>
             <p>{this.props.bio}</p>
-            <button class="user-card-button" onClick={this.handleClick}>{this.state.buttonText}</button>
+            <button onClick={this.handleClick}>{this.state.buttonText}</button>
           </div>
         </a>);
   }
